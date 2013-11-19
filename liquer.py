@@ -121,7 +121,7 @@ class CompoundQuery(Query):
         :param type: lambda
 
         '''
-        self.queries = args
+        self.queries = [arg for arg in args if getattr(arg, 'queries', True)]
         self.op = kwargs.pop('op', lambda x, y: x and y)
         super(CompoundQuery, self).__init__()
 

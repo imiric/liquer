@@ -15,6 +15,7 @@ class TestLiquer(unittest.TestCase):
         self.assertTrue((Q(foo__bar='Hello World!') | Q(foo__baz=2))(a))
         self.assertFalse((Q(foo__bar='Hello World!') & Q(foo__baz=2))(a))
         self.assertTrue((Q(foo__bar='Hello World!') & Q(foo__baz=1))(a))
+        self.assertTrue((Q() | Q(foo__bar__icontains='hello'))(a))
 
 if __name__ == '__main__':
     unittest.main()
